@@ -2,16 +2,16 @@ package com.ecommerce.sb_ecom.model;
 
 public class Category {
 
-    private Integer categroyId;
+    private Long categoryId;
 
     private String  categoryName;
 
-    public Integer getCategroyId() {
-        return categroyId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategroyId(Integer categroyId) {
-        this.categroyId = categroyId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCategoryName() {

@@ -1,24 +1,47 @@
 package com.ecommerce.sb_ecom.controller;
 
 
-
 import com.ecommerce.sb_ecom.model.Category;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ecommerce.sb_ecom.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/keelakollai")   //@requestMapping annotation is used to define base url
 public class CategoryController {
 
-    private List<Category>  categoryList = new ArrayList<>();
+    @Autowired                                  // field level dependency injection
+    public CategoryService categoryService;
 
-    @GetMapping("/public/categories")
+    // constructor level dependency injection
+    /*public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }*/
+
+
+    @GetMapping("/api/public/categories")
     public List<Category> getCategoryList() {
-        return categoryList;
+        return categoryService.getCategory();
+    }
+
+
+    @PostMapping("/api/public/createCategory")
+    public String createCategory(@RequestBody Category category) {
+
+        categoryService.createCategory(category);
+        return " Category created Successfully ";
+
+    }
+
+
+    @DeleteMapping("/api/admin/deleteCategory/{categoryId}")
+    public String createCategory(@PathVariable Long categoryId) {
+
+        return categoryService.deleteCategory(categoryId);
+
+
     }
 
 }
