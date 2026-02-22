@@ -48,9 +48,6 @@ public class CategoryController {
         try {
             String statusCode = categoryService.deleteCategory(categoryId);
              return new ResponseEntity<>(statusCode, HttpStatus.OK);
-               //another way
-               //return ResponseEntity.ok(statusCode);
-              // return ResponseEntity.status(HttpStatus.OK).body(statusCode);
         } catch (ResponseStatusException e) {
             return new ResponseEntity<>(e.getReason(), e.getStatusCode());
         }
